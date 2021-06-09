@@ -38,6 +38,40 @@ As I'am a big fan of Insomnia HTTP Client you will find a **insomnia.json** in t
 To use it just import this file into a running Insomnia HTTP Client. You are then able to make requests to the default
 location **http://localhost:5000**
 
+### HTTP testing via IntelliJ .http file
+If you prefer the IDE solution you may want to have a look to **url_playground.http** in the root folder of the application.
+It is executed the out of the box http client from IntelliJ.
+
+### HTTP testing via curl
+To create a new shortened url:
+```
+curl --request POST \
+  --url http://localhost:5000/squeeze \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"fullUrl": "https://www.google.com"
+}'
+```
+To create a new shortened url with custom slug:
+```
+curl --request POST \
+  --url http://localhost:5000/squeeze \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"fullUrl": "https://www.google.com", "customSlug": "demo-slug"
+}'
+```
+To test the redirecting to a full url (make sure you are using an already created slug):
+```
+curl --request GET \
+  --url http://localhost:5000/demo-slug
+```
+To see the statistics:
+```
+curl --request GET \
+  --url http://localhost:5000/statistics
+```
+
 ### Environment 
 Checking the **.env** file in the root of your application you will see the following simple settings:
 ```

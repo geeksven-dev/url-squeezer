@@ -1,0 +1,22 @@
+### create a short url
+POST http://localhost:5000/squeeze
+Content-Type: application/json
+
+{
+  "fullUrl": "https://www.web.de"
+}
+
+### create a short url with custom slug
+POST http://localhost:5000/squeeze
+Content-Type: application/json
+
+{
+  "fullUrl": "https://www.web.de",
+  "customSlug": "daimler-test"
+}
+
+### test redirect with slug
+GET http://localhost:5000/daimler-test
+
+### get statistics
+GET http://localhost:5000/statistics
